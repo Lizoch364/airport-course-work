@@ -1,0 +1,39 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Пользователь</h1>
+  <form th:object="${form}">
+    <fieldset disabled>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">id</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.id}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Фамилия</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.surname}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Имя</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.name}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Отчество</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.lastName}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Дата рождения</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.birthDate}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Логин</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.login}">
+      </div>
+    </fieldset>
+  </form>
+  <div>
+    <a class="btn btn-outline-primary mb-5" th:href="@{/admin/users/update/{id}(id=${model.value.id})}">Изменить</a>
+    <a class="btn btn-outline-secondary mb-5" th:href="@{/admin/users}">Вернуться ко всем</a>
+  </div>
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>

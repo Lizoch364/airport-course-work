@@ -1,0 +1,24 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Рейтинг авиакомпаний</h1>
+  <table th:object="${form}"
+         class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Название</th>
+        <th scope="col">Количество проданных билетов</th>
+      </tr>
+    </thead >
+    <tbody>
+      <tr th:each="airline, index : ${model.airlineRating}">
+        <th scope="row" th:text="${index.count}"></th>
+        <td th:text="${airline.name}"></td>
+        <td th:text="${airline.countTicket}"></td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>

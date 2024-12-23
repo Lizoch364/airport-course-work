@@ -1,0 +1,41 @@
+<div th:replace="~{/fragments/header}"></div>
+<main class="container">
+  <h1>Начальная страница сервиса по покупке авиабилетов!</h1>
+  <form th:action="@{/flights}"
+        th:method="get"
+        th:object="${form}"
+        class="row g-3">
+      <div class="col-auto">
+        <label for="departureCity" class="visually-hidden">departureCity</label>
+        <input type="text"
+               class="form-control"
+               id="departureCity"
+               placeholder="Откуда"
+               name="departureCity"
+               th:field="*{departureCity}"
+               th:errorclass="is-invalid">
+        <small th:if="${#fields.hasErrors('departureCity')}"
+              th:errors="*{departureCity}"
+              class="text-danger">Поле обязательно для заполнения</small>
+      </div>
+      <div class="col-auto">
+        <label for="arrivalCity" class="visually-hidden">arrivalCity</label>
+        <input type="text"
+               class="form-control"
+               id="arrivalCity"
+               placeholder="Куда"
+               name="arrivalCity"
+               th:field="*{arrivalCity}"
+               th:errorclass="is-invalid">
+        <small th:if="${#fields.hasErrors('arrivalCity')}"
+               th:errors="*{arrivalCity}"
+               class="text-danger">Поле обязательно для заполнения</small>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Найти</button>
+      </div>
+  </form>
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>
+

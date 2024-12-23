@@ -1,0 +1,45 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Билеты</h1>
+  <table
+         th:object="${form}"
+         class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Рейс</th>
+        <th scope="col">Пассажир</th>
+        <th scope="col">Начальная стоимость</th>
+        <th scope="col">Скидка</th>
+        <th scope="col">Итоговая стоимость</th>
+        <th scope="col">Статус</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead >
+    <tbody>
+      <tr th:each="ticket : ${model.values}">
+        <th scope="row" th:text="${ticket.id}"></th>
+        <td th:text="${ticket.flightName}"></td>
+        <td th:text="${ticket.userSurname + ' ' + ticket.userName + ' ' + ticket.userLastname}"></td>
+        <td th:text="${ticket.initialPrice}"></td>
+        <td th:text="${ticket.discount}"></td>
+        <td th:text="${ticket.totalPrice}"></td>
+        <td th:text="${ticket.ticketStatus}"></td>
+        <td><a class="btn btn-outline-success" th:href="@{/admin/tickets/{id}(id=${ticket.id})}">Подробнее</a>
+        </td>
+        <td>
+          <form th:action="@{/admin/tickets/decline/{id}(id=${ticket.id})}"
+            th:method="post"
+            th:object="${form}"
+          >
+            <button type="submit" class="btn btn-outline-danger">Удалить</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>

@@ -1,0 +1,22 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Авиакомпания</h1>
+  <form th:object="${form}">
+    <fieldset disabled>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">id</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.id}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Название</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.name}">
+      </div>
+    </fieldset>
+  </form>
+  <a class="btn btn-outline-primary mb-5" th:href="@{/admin/airlines/update/{id}(id=${model.value.id})}">Изменить</a>
+  <a class="btn btn-outline-secondary mb-5" th:href="@{/admin/airlines}">Вернуться ко всем</a>
+
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>

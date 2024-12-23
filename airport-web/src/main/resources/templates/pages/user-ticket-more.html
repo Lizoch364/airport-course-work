@@ -1,0 +1,56 @@
+<div th:replace="~{/fragments/header}"></div>
+<main class="container">
+  <h1>Билет №<span th:text="${model.value.ticketId}"></span></h1>
+  <form th:object="${form}">
+    <fieldset disabled>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Пассажир</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${user.surname} + ' ' + ${user.name} + ' ' + ${user.lastName}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Рейс</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.flightName}" name="surname">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Авиакомпания</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.airlineName}" name="surname">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Аэропорт вылета</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.departureAirportName} + ', город ' + ${model.value.departureAirportCity}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Дата вылета</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.departureDate}" name="lastName">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Аэропорт прилета</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.arrivalAirportName} + ', город ' + ${model.value.arrivalAirportCity}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Дата прилета</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.arrivalDate}" name="login">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Размер скидки по билету</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.discount}" name="surname">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Стоимость</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.totalPrice}" name="surname">
+      </div>
+
+    </fieldset>
+  </form>
+  <form th:action="@{/tickets/decline/{id}(id=${model.value.ticketId})}"
+    th:method="post"
+    th:object="${form}"
+    class="d-flex gap-2"
+  >
+    <a class="btn btn-outline-secondary mb-5" th:href="@{/tickets}">Вернуться к списку</a>
+    <div>
+      <button type="submit" class="btn btn-outline-danger">Удалить</button>
+    </div>
+  </form>
+</main>
+<div th:replace="~{/fragments/footer}"></div>

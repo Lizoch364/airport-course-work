@@ -1,0 +1,23 @@
+<div th:replace="~{/fragments/header}"></div>
+<main class="container">
+  <h1>Мои билеты</h1>
+  <div class="d-flex flex-column gap-2">
+    <div th:each="ticket : ${model.tickets}" class="card w-full">
+      <div class="card-body">
+        <h5 class="card-title" >Билет №<span th:text="${ticket.ticketId}"></span></h5>
+        <p class="card-text" >Рейс: <span th:text="${ticket.nameFlight}"></span></p>
+        <p class="card-text" >Дата вылета: <span th:text="${ticket.departureDate}"></span>; дата прилета <span th:text="${ticket.arrivalDate}"></span>;</p>
+        <p class="card-text" >Стоимость: <span th:text="${ticket.totalPrice}"></span></p>
+        <form th:action="@{/tickets/decline/{id}(id=${ticket.ticketId})}"
+          th:method="post"
+          th:object="${form}"
+          class="d-flex gap-2"
+        >
+          <a th:href="@{/tickets/{id}(id=${ticket.ticketId})}" class="btn btn-primary">Подробнее</a>
+          <button type="submit" class="btn btn-outline-danger">Удалить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+<div th:replace="~{/fragments/footer}"></div>

@@ -1,0 +1,93 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Регистрация пользователя</h1>
+  <form th:action="@{/register}"
+        th:method="post"
+        th:object="${form}" >
+    <div class="mb-3">
+      <label for="surname" class="form-label">Фамилия</label>
+      <input th:field="*{surname}"
+             th:errorclass="is-invalid"
+             type="text"
+             class="form-control"
+             id="surname"
+             name="surname"/>
+      <small th:if="${#fields.hasErrors('surname')}"
+              th:errors="*{surname}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Имя</label>
+      <input th:field="*{name}"
+             th:errorclass="is-invalid"
+             type="text"
+             class="form-control"
+             id="name"
+             name="name"/>
+      <small th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Отчество</label>
+      <input th:field="*{lastName}"
+             type="text"
+             class="form-control"
+             id="name"
+             name="lastName"/>
+    </div>
+    <div class="mb-3">
+      <label for="birthDate" class="form-label">Дата рождения</label>
+      <input th:field="*{birthDate}"
+             th:errorclass="is-invalid"
+             type="date"
+             class="form-control"
+             id="birthDate"
+             name="birthDate"/>
+      <small th:if="${#fields.hasErrors('birthDate')}"
+              th:errors="*{birthDate}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <div class="mb-3">
+      <label for="login" class="form-label">Логин</label>
+      <input th:field="*{login}"
+             th:errorclass="is-invalid"
+             type="text"
+             class="form-control"
+             id="login"
+             name="login"/>
+      <small th:if="${#fields.hasErrors('login')}"
+              th:errors="*{login}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Пароль</label>
+      <input th:field="*{password}"
+             th:errorclass="is-invalid"
+             type="password"
+             class="form-control"
+             id="password"
+             name="password"/>
+      <small th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Повторите пароль</label>
+      <input th:field="*{confirmPassword}"
+             th:errorclass="is-invalid"
+             type="password"
+             class="form-control"
+             id="confirmPassword"
+             name="confirmPassword"/>
+      <small th:if="${#fields.hasErrors('confirmPassword')}"
+              th:errors="*{confirmPassword}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <button class="btn btn-outline-primary">Зарегистрироваться</button>
+  </form>
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>
+

@@ -1,0 +1,30 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Редактирование авиакомпании</h1>
+  <form th:action="@{/admin/airlines/update/{id}(id=${form.id})}"
+        th:method="post"
+        th:object="${form}" >
+
+        <input th:field="*{id}"
+               type="hidden"
+               class="form-control"
+               id="id"/>
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Название</label>
+      <input th:field="*{name}"
+             th:errorclass="is-invalid"
+             type="text"
+             class="form-control"
+             id="name"/>
+      <small th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Изменить</button>
+  </form>
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>
+

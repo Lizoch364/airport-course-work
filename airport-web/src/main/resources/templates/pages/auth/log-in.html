@@ -1,0 +1,34 @@
+<div th:replace="~{/fragments/header}"></div>
+
+  <main class="container" style="max-width: 40%;">
+        <h1>Войти в аккаунт</h1>
+        <form th:action="@{/login}"
+              th:method="post"
+              class="m-auto pb-3">
+            <div class="mb-3">
+                <label class="form-label" for="username">Логин</label>
+                <input id="login"
+                      name="username"
+                      th:value="${login}"
+                      type="text" class="form-control text-center" aria-describedby="loginHelp"/>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="password">Пароль</label>
+                <input id="password"
+                      name="password"
+                      type="password" class="form-control text-center" aria-describedby="passwordHelp" />
+            </div>
+            <input name='remember' type='checkbox' hidden checked/>
+
+            <p class="text-danger" th:if="${badCredentials}">
+                Неверный логин или пароль
+            </p>
+
+            <div>
+              <button type="submit" class="btn btn-primary">Войти</button>
+              <span>Нет аккаунта? <a th:href="@{/register}">Зарегистрируйтесь!</a></span>
+            </div>
+        </form>
+  </main>
+<div th:replace="~{/fragments/footer}"></div>

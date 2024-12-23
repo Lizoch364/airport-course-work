@@ -1,0 +1,46 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Билет</h1>
+  <form th:object="${form}">
+    <fieldset disabled>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">id</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.id}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Рейс</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.flightName}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Пассажир</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.userSurname + ' ' + model.value.userName + ' ' + model.value.userLastname}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Начальная стоимость</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.initialPrice}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Скидка</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.discount}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Итоговая стоимость</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.totalPrice}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Статус</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.ticketStatus}">
+      </div>
+    </fieldset>
+  </form>
+  <a class="btn btn-outline-secondary" th:href="@{/admin/tickets}">Вернуться ко всем</a>
+  <form th:action="@{/admin/tickets/decline/{id}(id=${model.value.id})}"
+    th:method="post"
+    th:object="${form}"
+  >
+    <button type="submit" class="btn btn-outline-danger">Удалить</button>
+  </form>
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>

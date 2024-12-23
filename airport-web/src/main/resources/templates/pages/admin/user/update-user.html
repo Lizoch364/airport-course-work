@@ -1,0 +1,91 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Редактирование пользователя</h1>
+  <form th:action="@{/admin/users/update/{id}(id=${form.id})}"
+        th:method="post"
+        th:object="${form}" >
+
+        <input th:field="*{id}"
+               type="hidden"
+               class="form-control"
+               id="id"/>
+
+               <div class="mb-3">
+                <label for="surname" class="form-label">Фамилия</label>
+                <input th:field="*{surname}"
+                       th:errorclass="is-invalid"
+                       type="text"
+                       class="form-control"
+                       name="surname"
+                       id="surname"/>
+                <small th:if="${#fields.hasErrors('surname')}"
+                        th:errors="*{surname}"
+                        class="text-danger">Поле обязательно для заполнения</small>
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Имя</label>
+                <input th:field="*{name}"
+                       th:errorclass="is-invalid"
+                       type="text"
+                       class="form-control"
+                       name="name"
+                       id="name"/>
+                <small th:if="${#fields.hasErrors('name')}"
+                        th:errors="*{name}"
+                        class="text-danger">Поле обязательно для заполнения</small>
+              </div>
+              <div class="mb-3">
+                <label for="last-name" class="form-label">Отчество</label>
+                <input th:field="*{lastName}"
+                       th:errorclass="is-invalid"
+                       type="text"
+                       class="form-control"
+                       name="lastName"
+                       id="last-name"/>
+                <small th:if="${#fields.hasErrors('lastName')}"
+                        th:errors="*{lastName}"
+                        class="text-danger">Поле обязательно для заполнения</small>
+              </div>
+              <div class="mb-3">
+                <label for="birth-day" class="form-label">Дата рождения</label>
+                <input th:field="*{birthDate}"
+                       th:errorclass="is-invalid"
+                       type="date"
+                       class="form-control"
+                       name="birthDate"
+                       id="birth-day"/>
+                <small th:if="${#fields.hasErrors('birthDate')}"
+                        th:errors="*{birthDate}"
+                        class="text-danger">Поле обязательно для заполнения</small>
+              </div>
+              <div class="mb-3">
+                <label for="login" class="form-label">Логин</label>
+                <input th:field="*{login}"
+                       th:errorclass="is-invalid"
+                       type="text"
+                       class="form-control"
+                       name="login"
+                       id="login"/>
+                <small th:if="${#fields.hasErrors('login')}"
+                        th:errors="*{login}"
+                        class="text-danger">Поле обязательно для заполнения</small>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Пароль</label>
+                <input th:field="*{password}"
+                       th:errorclass="is-invalid"
+                       type="text"
+                       class="form-control"
+                       name="password"
+                       id="password"/>
+                <small th:if="${#fields.hasErrors('password')}"
+                        th:errors="*{password}"
+                        class="text-danger">Поле обязательно для заполнения</small>
+              </div>
+    <button type="submit" class="btn btn-primary">Изменить</button>
+  </form>
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>
+

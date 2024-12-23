@@ -1,0 +1,49 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Рейс</h1>
+  <form th:object="${form}">
+    <fieldset disabled>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">id</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.id}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Название</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.name}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Дата вылета</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.departure}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Аэропорт вылета</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.departureAirportName + ' ' + model.value.departureAirportCity}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Дата прилета</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.arrival}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Аэропорт прилета</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.arrivalAirportName + ' ' + model.value.arrivalAirportCity}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Авиакомпания</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.airlineName}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Количество мест</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.countSeats}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Стоимость</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.price}">
+      </div>
+    </fieldset>
+  </form>
+  <a class="btn btn-outline-primary" th:href="@{/admin/flights/update/{id}(id=${model.value.id})}">Изменить</a>
+  <a class="btn btn-outline-secondary" th:href="@{/admin/flights}">Вернуться ко всем</a>
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>

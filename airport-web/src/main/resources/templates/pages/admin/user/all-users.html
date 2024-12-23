@@ -1,0 +1,41 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Пользователи</h1>
+  <table
+         th:object="${form}"
+         class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Отчество</th>
+        <th scope="col">Дата рождения</th>
+        <th scope="col">Роль</th>
+        <th scope="col">Логин</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead >
+    <tbody>
+      <tr th:each="user : ${model.values}">
+        <th scope="row" th:text="${user.id}"></th>
+        <td th:text="${user.surname}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.birthDate}"></td>
+        <td th:text="${user.userRole}"></td>
+        <td th:text="${user.login}"></td>
+        <td><a class="btn btn-outline-success" th:href="@{/admin/users/{id}(id=${user.id})}">Подробнее</a>
+            <a class="btn btn-outline-danger" th:href="@{/admin/users/update/{id}(id=${user.id})}">Обновить</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a class="btn btn-outline-primary" th:href="@{/admin/users/create}">Создать</a>
+
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>

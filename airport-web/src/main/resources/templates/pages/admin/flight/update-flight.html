@@ -1,0 +1,122 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Редактирование рейса</h1>
+  <form th:action="@{/admin/flights/update/{id}(id=${form.id})}"
+        th:method="post"
+        th:object="${form}" >
+
+        <input th:field="*{id}"
+               type="hidden"
+               class="form-control"
+               id="id"/>
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Название</label>
+      <input th:field="*{name}"
+             th:errorclass="is-invalid"
+             type="text"
+             class="form-control"
+             id="name"/>
+      <small th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <div class="mb-3">
+      <label for="departure" class="form-label">Дата вылета</label>
+      <input th:field="*{departure}"
+             th:errorclass="is-invalid"
+             type="datetime-local"
+             class="form-control"
+             id="departure"
+             name="departure"/>
+      <small th:if="${#fields.hasErrors('departure')}"
+              th:errors="*{departure}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <div class="mb-3">
+      <label for="departure-airport" class="form-label">Аэропорт вылета</label>
+      <select class="form-select" id="exampleInputPassenger" name="departureAirportId">
+              <option th:value="${form.departureAirportId}" disabled="true" selected="${form.departureAirportId == departureAirportId}"></option>
+              <option
+                     th:each="airport : ${model.airports}"
+                     th:text="${airport.name + ' ' + airport.city}"
+                     th:value="${airport.id}"
+                     th:selected="${form.departureAirportId == airport.id}"
+              ></option>
+       </select>
+      <small th:if="${#fields.hasErrors('departureAirportId')}"
+              th:errors="*{departure-airport}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <div class="mb-3">
+      <label for="arrival" class="form-label">Дата прилета</label>
+      <input th:field="*{arrival}"
+             th:errorclass="is-invalid"
+             type="datetime-local"
+             class="form-control"
+             id="arrival"
+             name="arrival"/>
+      <small th:if="${#fields.hasErrors('arrival')}"
+              th:errors="*{arrival}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <div class="mb-3">
+      <label for="arrival-airport" class="form-label">Аэропорт прилета</label>
+      <select class="form-select" id="exampleInputPassenger" name="arrivalAirportId">
+              <option th:value="${form.arrivalAirportId}" disabled="true" selected="${form.arrivalAirportId == arrivalAirportId}"></option>
+              <option
+                     th:each="airport : ${model.airports}"
+                     th:text="${airport.name + ' ' + airport.city}"
+                     th:value="${airport.id}"
+                     th:selected="${form.arrivalAirportId == airport.id}"
+              ></option>
+       </select>
+      <small th:if="${#fields.hasErrors('arrivalAirportId')}"
+              th:errors="*{arrivalAirportId}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <div class="mb-3">
+      <label for="airline" class="form-label">Авиакомпания</label>
+      <select class="form-select" id="exampleInputPassenger" name="airlineId">
+              <option th:value="${form.airlineId}" disabled="true" selected="${form.airlineId == airlineId}"></option>
+              <option
+                     th:each="airline : ${model.airlines}"
+                     th:text="${airline.name}"
+                     th:value="${airline.id}"
+                     th:selected="${form.airlineId == airline.id}"
+              ></option>
+       </select>
+      <small th:if="${#fields.hasErrors('airlineId')}"
+              th:errors="*{airlineId}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <div class="mb-3">
+      <label for="countSeats" class="form-label">Количество мест</label>
+      <input th:field="*{countSeats}"
+             th:errorclass="is-invalid"
+             type="number"
+             class="form-control"
+             id="countSeats"
+             name="countSeats"/>
+      <small th:if="${#fields.hasErrors('countSeats')}"
+              th:errors="*{countSeats}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Стоимость билета</label>
+      <input th:field="*{price}"
+             th:errorclass="is-invalid"
+             type="number"
+             class="form-control"
+             id="price"/>
+      <small th:if="${#fields.hasErrors('price')}"
+              th:errors="*{price}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Изменить</button>
+  </form>
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>
+

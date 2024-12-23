@@ -1,0 +1,26 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Аэропорт</h1>
+  <form th:object="${form}">
+    <fieldset disabled>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">id</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.id}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Название</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.name}">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Город</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${model.value.city}">
+      </div>
+    </fieldset>
+  </form>
+  <a class="btn btn-outline-primary" th:href="@{/admin/airports/update/{id}(id=${model.value.id})}">Изменить</a>
+  <a class="btn btn-outline-secondary" th:href="@{/admin/airports}">Вернуться ко всем</a>
+
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>

@@ -1,0 +1,58 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Покупка билета</h1>
+  <form th:action="@{/buy-ticket}"
+        th:method="post"
+        th:object="${form}">
+    <div class="mb-3">
+      <label for="passenger" class="form-label">Пассажир</label>
+      <input type="text" class="form-control" th:value="${model.user.surname + ' ' + model.user.name + ' ' + model.user.lastName}" disabled>
+    </div>
+    <div class="mb-3">
+      <label for="flight" class="form-label">Рейс</label>
+      <select class="form-select" id="flight" name="flightId">
+        <option value="0" disabled="true" th:selected="${form.flightId == 0}">Выберите рейс</option>
+        <option
+          th:each="flight : ${model.flights}"
+          th:text="${flight.name}"
+          th:value="${flight.id}"
+          th:selected="${form.flightId == flight.id}"
+        ></option>
+      </select>
+      <div class="form-text">Это поле обязательно для заполнения</div>
+    </div>
+    <div th:if="${info != null}">
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Cтоимость билета</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:value="${info.flight.price}" disabled>
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Cкидка</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:value="${info.discount}" disabled>
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Итоговая стоимость</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:value="${info.totalPrice}" disabled>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Купить билет</button>
+  </form>
+</main>
+
+<script>
+  const getFlightSelect = () => document.querySelector("#flight");
+
+  getFlightSelect().addEventListener("change", resendFormData);
+
+  function resendFormData() {
+    let flightId = getFlightSelect().value;
+
+    flightId = flightId != "0" ? flightId : "";
+
+    window.location.replace("/buy-ticket?f=" + flightId);
+  }
+</script>
+
+<div th:replace="~{/fragments/footer}"></div>

@@ -1,0 +1,40 @@
+<div th:replace="~{/fragments/header}"></div>
+<main class="container">
+  <h1>Личный кабинет</h1>
+  <form th:object="${form}">
+    <fieldset disabled>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Фамилия</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${user.surname}" name="surname">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Имя</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${user.name}" name="name">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Отчество</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${user.lastName}" name="lastName">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Дата рождения</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${user.birthDate}" name="birthDate">
+      </div>
+      <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Логин</label>
+        <input type="text" id="disabledTextInput" class="form-control" th:placeholder="${user.login}" name="login">
+      </div>
+    </fieldset>
+  </form>
+</form>
+<form th:action="@{/logout}"
+  th:method="post"
+  th:object="${form}"
+  class="d-flex gap-2"
+>
+<a class="btn btn-outline-primary" th:href="@{/profile/update}">Изменить</a>
+<a class="btn btn-outline-primary" th:href="@{/profile/update-password}">Редактировать пароль</a>
+
+    <button type="submit" class="btn btn-outline-danger">Выйти</button>
+</form>
+</main>
+<div th:replace="~{/fragments/footer}"></div>

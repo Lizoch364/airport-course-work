@@ -1,0 +1,24 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Создание авиакомпании</h1>
+  <form th:action="@{/admin/airlines/create}"
+        th:method="post"
+        th:object="${form}" >
+    <div class="mb-3">
+      <label for="name" class="form-label">Название</label>
+      <input th:field="*{name}"
+             th:errorclass="is-invalid"
+             type="text"
+             class="form-control"
+             id="name"/>
+      <small th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}"
+              class="text-danger">Поле обязательно для заполнения</small>
+    </div>
+    <button class="btn btn-outline-primary">Создать</button>
+  </form>
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>
+

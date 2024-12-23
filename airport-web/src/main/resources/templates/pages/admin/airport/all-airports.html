@@ -1,0 +1,33 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Аэропорты</h1>
+  <table
+         th:object="${form}"
+         class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Название</th>
+        <th scope="col">Город</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead >
+    <tbody>
+      <tr th:each="airport : ${model.values}">
+        <th scope="row" th:text="${airport.id}"></th>
+        <td th:text="${airport.name}"></td>
+        <td th:text="${airport.city}"></td>
+        <td><a class="btn btn-outline-success" th:href="@{/admin/airports/{id}(id=${airport.id})}">Подробнее</a>
+            <a class="btn btn-outline-danger" th:href="@{/admin/airports/update/{id}(id=${airport.id})}">Обновить</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a class="btn btn-outline-primary" th:href="@{/admin/airports/create}">Создать</a>
+
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>

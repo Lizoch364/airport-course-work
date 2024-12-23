@@ -1,0 +1,47 @@
+<div th:replace="~{/fragments/header}"></div>
+
+<main class="container">
+  <h1>Рейсы</h1>
+  <table
+         th:object="${form}"
+         class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Название</th>
+        <th scope="col">Дата вылета</th>
+        <th scope="col">Аэропорт вылета</th>
+        <th scope="col">Дата прилета</th>
+        <th scope="col">Аэропорт прилета</th>
+        <th scope="col">Авиакомпания</th>
+        <th scope="col">Кол-во мест</th>
+        <th scope="col">Стоимость</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+
+        <th scope="col"></th>
+      </tr>
+    </thead >
+    <tbody>
+      <tr th:each="flight : ${model.values}">
+        <th scope="row" th:text="${flight.id}"></th>
+        <td th:text="${flight.name}"></td>
+        <td th:text="${flight.departure}"></td>
+        <td th:text="${flight.departureAirportName + ' ' + flight.departureAirportCity}"></td>
+        <td th:text="${flight.arrival}"></td>
+        <td th:text="${flight.arrivalAirportName + ' ' + flight.arrivalAirportCity}"></td>
+        <td th:text="${flight.airlineName}"></td>
+        <td th:text="${flight.countSeats}"></td>
+        <td th:text="${flight.price}"></td>
+        <td><a class="btn btn-outline-success" th:href="@{/admin/flights/{id}(id=${flight.id})}">Подробнее</a>
+            <a class="btn btn-outline-danger" th:href="@{/admin/flights/update/{id}(id=${flight.id})}">Обновить</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a class="btn btn-outline-primary" th:href="@{/admin/flights/create}">Создать</a>
+
+</main>
+
+<div th:replace="~{/fragments/footer}"></div>
